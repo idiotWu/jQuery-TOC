@@ -1,0 +1,28 @@
+{
+  "name": "jquery-toc",
+  "version": "0.0.1",
+  "homepage": "https://github.com/idiotWu/jQuery-TOC",
+  "authors": [
+    "Dolphin Wood <dolphin.w.e@gmail.com>"
+  ],
+  "description": "Table of Contents Generator Plugin for (non-)jQuery",
+  "main": "./dist/toc.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jQuery",
+    "TOC"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "jQuery-TOC",
+  "version": "0.0.1",
+  "description": "Table of Contents Generator Plugin for (non-)jQuery",
+  "main": "./dist/toc.min.js",
+  "copyright": "2015",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idiotWu/jQuery-TOC.git"
+  },
+  "keywords": [
+    "jQuery",
+    "toc",
+    "navigation"
+  ],
+  "author": "Dolphin Wood <dolphin.w.e@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idiotWu/jQuery-TOC/issues"
+  },
+  "homepage": "https://github.com/idiotWu/jQuery-TOC",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
+  },
+  "dependencies": {
+    "gulp-header": "^1.2.2"
+  }
+}
