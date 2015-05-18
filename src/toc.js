@@ -117,6 +117,7 @@
             throw new TypeError('selector must contains only h1-6')
         }
 
+        var ret = buildTOC(options);
         var currentHash = location.hash;
 
         if (currentHash) {
@@ -125,7 +126,7 @@
             location.hash = currentHash;
         }
 
-        return buildTOC(options);
+        return ret;
     };
 
     if (typeof define === 'function' && define.amd) {
