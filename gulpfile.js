@@ -16,7 +16,7 @@ var banner = [
     ' * <%= pkg.name %>',
     ' * <%= pkg.description %>',
     ' * <%= pkg.url %>',
-    ' * @author <%= pkg.author.name %> <%= pkg.author.url %>',
+    ' * @author <%= pkg.author %>',
     ' * @version <%= pkg.version %>',
     ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.',
     ' */\n'
