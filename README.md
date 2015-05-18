@@ -1,4 +1,4 @@
-A plugin that generates table of contents(TOC) dynamically for both jQuery or non-jQuery.
+A plugin that generates table of contents(TOC) automatically for both jQuery or non-jQuery.
 
 ## Install
 

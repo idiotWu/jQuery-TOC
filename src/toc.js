@@ -117,6 +117,14 @@
             throw new TypeError('selector must contains only h1-6')
         }
 
+        var currentHash = location.hash;
+
+        if (currentHash) {
+            // fix hash
+            location.hash = '';
+            location.hash = currentHash;
+        }
+
         return buildTOC(options);
     };
 

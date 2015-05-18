@@ -155,6 +155,14 @@
 
         $(this).append(buildTOC(options));
 
+        var currentHash = location.hash;
+
+        if (currentHash) {
+            // fix hash
+            location.hash = '';
+            location.hash = currentHash;
+        }
+
         return $(this);
     };
 }));
