@@ -9,7 +9,10 @@ bower install jquery-toc
 ## Compatibility
 
 1. **non-jQuery** version works on **IE9+**
-2. **jQuery** version works on anywhere with **jQuery** 
+2. **jQuery** version works on anywhere with **jQuery**
+
+## Showcase
+[https://idiotwu.me/understanding-es6-promise/](https://idiotwu.me/understanding-es6-promise/) 
 
 ## Usage
 
@@ -31,6 +34,15 @@ $(elem).initTOC(options);
 ```
 
 ## Options
+
+```javascript
+initTOC({
+    selector: 'h1, h2, h3, h4, h5, h6',
+    scope: 'body',
+    overwrite: false,
+    prefix: 'toc'
+})
+```
 
 - `String:selector`: headers selector, default is `'h1, h2, h3, h4, h5, h6'`.
 - `String:scope`: selector to specify elements search scope, default is `'body'`.
