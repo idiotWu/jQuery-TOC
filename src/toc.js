@@ -117,16 +117,17 @@
             throw new TypeError('selector must contains only h1-6')
         }
 
-        var ret = buildTOC(options);
         var currentHash = location.hash;
 
         if (currentHash) {
             // fix hash
-            location.hash = '';
-            location.hash = currentHash;
+            setTimeout(function () {
+                location.hash = '';
+                location.hash = currentHash;
+            }, 0);
         }
 
-        return ret;
+        return buildTOC(options);
     };
 
     if (typeof define === 'function' && define.amd) {

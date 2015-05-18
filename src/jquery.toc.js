@@ -159,8 +159,10 @@
 
         if (currentHash) {
             // fix hash
-            location.hash = '';
-            location.hash = currentHash;
+            setTimeout(function () {
+                location.hash = '';
+                location.hash = currentHash;
+            }, 0);
         }
 
         return $(this);
