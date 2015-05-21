@@ -1,7 +1,7 @@
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define('jquery.toc', ['jquery'], factory);
+        define(['jquery'], factory);
     } else {
         // Browser globals
         factory(jQuery);
@@ -149,7 +149,7 @@
             throw new TypeError('selector must be a string');
         }
 
-        if (!selector.match(/^(?:h[1-6],?\s*)*$/g)) {
+        if (!selector.match(/^(?:h[1-6],?\s*)+$/g)) {
             throw new TypeError('selector must contains only h1-6')
         }
 

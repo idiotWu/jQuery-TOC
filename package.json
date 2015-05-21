@@ -1,6 +1,6 @@
 {
   "name": "jQuery-TOC",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Table of Contents Generator Plugin for (non-)jQuery",
   "main": "./dist/toc.min.js",
   "copyright": "2015",
