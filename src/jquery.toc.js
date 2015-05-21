@@ -1,7 +1,7 @@
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery'], factory);
+        define('jquery.toc', ['jquery'], factory);
     } else {
         // Browser globals
         factory(jQuery);
@@ -25,7 +25,7 @@
     };
 
     /**
-     * create ordered-list
+     * create ul/ol
      * @param {jQuert} $wrapper
      * @param {Number} count
      *
@@ -79,7 +79,7 @@
 
             src.id = id;
             target.href = '#' + id;
-        };
+        }
     };
 
     /**
@@ -110,7 +110,7 @@
 
                 if (!$point.length) {
                     $point = $ret;
-                }
+                };
 
                 _setAttrs($(elem), $a, index);
 
@@ -149,8 +149,8 @@
             throw new TypeError('selector must be a string');
         }
 
-        if (!selector.match(/^(?:h[1-6],?\s*)+$/g)) {
-            throw new TypeError('selector must contains only h1-6');
+        if (!selector.match(/^(?:h[1-6],?\s*)*$/g)) {
+            throw new TypeError('selector must contains only h1-6')
         }
 
         $(this).append(buildTOC(options));
