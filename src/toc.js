@@ -58,7 +58,7 @@
         return function (src, target, index) {
             var content = src.textContent;
             var pre = prefix + '-' + index;
-            target.textContent = src.textContent;
+            target.textContent = content;
 
             var id = overwrite ? pre : (src.id || pre);
 
@@ -66,7 +66,7 @@
 
             src.id = id;
             target.href = '#' + id;
-        }
+        };
     };
 
     var buildTOC = function (options) {
@@ -113,7 +113,7 @@
             throw new TypeError('selector must be a string');
         }
 
-        if (!selector.match(/^(?:h[1-6],?\s*)*$/g)) {
+        if (!selector.match(/^(?:h[1-6],?\s*)+$/g)) {
             throw new TypeError('selector must contains only h1-6')
         }
 
@@ -131,7 +131,7 @@
     };
 
     if (typeof define === 'function' && define.amd) {
-        define('toc', [], function () {
+        define(function () {
             return initTOC;
         });
     } else {
