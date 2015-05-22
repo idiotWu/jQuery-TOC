@@ -79,7 +79,7 @@
 
             src.id = id;
             target.href = '#' + id;
-        }
+        };
     };
 
     /**
@@ -110,7 +110,7 @@
 
                 if (!$point.length) {
                     $point = $ret;
-                };
+                }
 
                 _setAttrs($(elem), $a, index);
 
@@ -150,7 +150,7 @@
         }
 
         if (!selector.match(/^(?:h[1-6],?\s*)+$/g)) {
-            throw new TypeError('selector must contains only h1-6')
+            throw new TypeError('selector must contains only h1-6');
         }
 
         $(this).append(buildTOC(options));

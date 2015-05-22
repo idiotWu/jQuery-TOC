@@ -41,13 +41,92 @@ initTOC({
     scope: 'body',
     overwrite: false,
     prefix: 'toc'
-})
+});
 ```
 
 - `String:selector`: headers selector, default is `'h1, h2, h3, h4, h5, h6'`.
 - `String:scope`: selector to specify elements search scope, default is `'body'`.
 - `Boolean:overwrite`: whether to overwrite existed headers' id, default is `false`, which means plugin will preserve the existed id property and create a string like `toc-1` for those don't have id assigned.
 - `String:prefix`: string to prepend to id/href property, default is `'toc'`, which generates a string like `toc-0`.
+
+## Example
+
+#### source:
+
+```html
+<aside id="toc"></aside>
+
+<article id="post">
+    <h1>this will be ignored due to specific selector</h1>
+    <p>...</p>
+
+    <h2>this is a h2</h2>
+    <p>...</p>
+
+    <h3>this is a h3</h3>
+    <p>...</p>
+
+    <h2>yet another h2</h2>
+    <p>...</p>
+
+    <h3>and another h3</h3>
+    <h4 id="wow">existed id will be preserved due to options</h4>
+</article>
+```
+
+### with jQuery version:
+
+```javascript
+$('#toc').initTOC({
+    selector: 'h2, h3, h4',
+    scope: '#post',
+    overwrite: false,
+    prefix: 'toc'
+});
+```
+
+#### yield:
+
+```html
+<aside id="toc">
+    <ol>
+        <li>
+            <a href="#toc-0">this is a h2</a>
+            <ol>
+                <li><a href="#toc-1">this is a h3</a></li>
+            </ol>
+            <li>
+                <a href="#toc-2">yet another h2</a>
+                <ol>
+                    <li>
+                        <a href="#toc-3">and another h3</a>
+                        <ol>
+                            <li><a href="#wow">existed id will be preserved due to options</a></li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </li>
+    </ol>
+</aside>
+
+<article id="post">
+    <h1>this will be ignored due to specific selector</h1>
+    <p>...</p>
+
+    <h2 id="toc-0">this is a h2</h2>
+    <p>...</p>
+
+    <h3 id="toc-1">this is a h3</h3>
+    <p>...</p>
+
+    <h2 id="toc-2">yet another h2</h2>
+    <p>...</p>
+
+    <h3 id="toc-3">and another h3</h3>
+    <h4 id="wow">existed id will be preserved due to options</h4>
+</article>
+```
 
 ## License
 MIT.

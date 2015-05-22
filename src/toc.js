@@ -17,7 +17,7 @@
 
         Array.prototype.forEach.call(target, function (elem) {
             var elems = elem.querySelectorAll(selector);
-            ret = ret.concat(Array.prototype.slice.call(elems))
+            ret = ret.concat(Array.prototype.slice.call(elems));
         });
 
         return ret;
@@ -114,7 +114,7 @@
         }
 
         if (!selector.match(/^(?:h[1-6],?\s*)+$/g)) {
-            throw new TypeError('selector must contains only h1-6')
+            throw new TypeError('selector must contains only h1-6');
         }
 
         var currentHash = location.hash;
