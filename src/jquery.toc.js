@@ -106,7 +106,7 @@
 
                 // wrapper was set to <li>
                 // so the reduce level should be one more
-                offset = (Math.abs(offset) + 1) * (offset % 2);
+                offset += offset % 2;
 
                 var $li = $('<li/>');
                 var $a = $('<a/>');
