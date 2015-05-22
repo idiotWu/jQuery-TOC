@@ -33,7 +33,7 @@
     };
 
     var createList = function (wrapper, count) {
-        while (--count) {
+        while (count--) {
             var ol = document.createElement('ol');
             wrapper.appendChild(ol);
             wrapper = ol;
@@ -42,16 +42,12 @@
         return wrapper;
     };
 
-    var setInsertPosition = function (currentWrapper, offset) {
-        if (offset < 0) {
-            return setInsertPosition(currentWrapper.parentElement, offset + 1);
+    var jumpBack = function (currentWrapper, offset) {
+        while (offset--) {
+            currentWrapper = currentWrapper.parentElement;
         }
 
-        if (offset > 0) {
-            return createList(currentWrapper, offset);
-        }
-
-        return currentWrapper.parentElement;
+        return currentWrapper;
     };
 
     var setAttrs = function (overwrite, prefix) {
@@ -75,23 +71,32 @@
 
         var ret = document.createElement('ol');
         var wrapper = ret;
+        var lastLi = null;
 
         var _setAttrs = setAttrs(options.overwrite, options.prefix);
 
         getHeaders(selector, scope).reduce(function (prev, cur, index) {
             var currentLevel = getLevel(cur.tagName);
             var offset = currentLevel - prev;
-            offset += offset % 2;
 
-            var pos = setInsertPosition(wrapper, offset) || ret;
+            if (offset > 0) {
+                wrapper = createList(lastLi, offset);
+            }
+
+            if (offset < 0) {
+                wrapper = jumpBack(wrapper, 1 - offset);
+            }
+
+            wrapper = wrapper || ret;
+
             var li = document.createElement('li');
             var a = document.createElement('a');
 
             _setAttrs(cur, a, index);
 
-            pos.appendChild(li).appendChild(a);
+            wrapper.appendChild(li).appendChild(a);
 
-            wrapper = li;
+            lastLi = li;
 
             return currentLevel;
         }, getLevel(selector));

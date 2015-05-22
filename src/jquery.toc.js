@@ -32,7 +32,7 @@
      * @return {jQuery} list
      */
     var createList = function ($wrapper, count) {
-        while (--count) {
+        while (count--) {
             $wrapper = $('<ol/>').appendTo($wrapper);
         }
 
@@ -40,22 +40,18 @@
     };
 
     /**
-     * set insert position
+     * insert position jump back
      * @param {jQuery} $currentWrapper: current insert point
      * @param {Number} offset: distance between current's and target's depth
      *
      * @return {jQuery} insert point
      */
-    var setInsertPosition = function ($currentWrapper, offset) {
-        if (offset < 0) {
-            return setInsertPosition($currentWrapper.parent(), offset + 1);
+    var jumpBack = function ($currentWrapper, offset) {
+        while (offset--) {
+            $currentWrapper = $currentWrapper.parent();
         }
 
-        if (offset > 0) {
-            return createList($currentWrapper, offset);
-        }
-
-        return $currentWrapper.parent();
+        return $currentWrapper;
     };
 
     /**
@@ -94,6 +90,7 @@
 
         var $ret = $('<ol/>');
         var $wrapper = $ret;
+        var $lastLi = null;
 
         var prevDepth = getLevel(selector);
         var _setAttrs = setAttrs(options.overwrite, options.prefix);
@@ -104,25 +101,35 @@
                 var currentDepth = getLevel(elem.tagName);
                 var offset = currentDepth - prevDepth;
 
-                // wrapper was set to <li>
-                // so the reduce level should be one more
-                offset += offset % 2;
+                if (offset > 0) {
+                    $wrapper = createList($lastLi, offset);
+                }
+
+                if (offset < 0) {
+                    // should be one more level to jump back
+                    // eg: (h2 > h3) + h2, offset = h2 - h3 = -1
+                    //
+                    // ol <------+ target
+                    //   li      |
+                    //     ol ---+ current
+                    //       li
+                    //
+                    // jumpback = target - current = 2
+                    $wrapper = jumpBack($wrapper, 1 - offset);
+                }
+
+                if (!$wrapper.length) {
+                    $wrapper = $ret;
+                }
 
                 var $li = $('<li/>');
                 var $a = $('<a/>');
-                var $point = setInsertPosition($wrapper, offset);
-
-                if (!$point.length) {
-                    $point = $ret;
-                }
 
                 _setAttrs($(elem), $a, index);
 
-                $li.append($a).appendTo($point);
+                $li.append($a).appendTo($wrapper);
 
-                // set wrapper to <li> so that it's possible to insert nodes in ol > li
-                $wrapper = $li;
-
+                $lastLi = $li;
                 prevDepth = currentDepth;
             });
 
