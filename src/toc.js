@@ -33,7 +33,7 @@
     };
 
     var createList = function (wrapper, count) {
-        while (count--) {
+        while (--count) {
             var ol = document.createElement('ol');
             wrapper.appendChild(ol);
             wrapper = ol;
@@ -82,6 +82,10 @@
             var currentLevel = getLevel(cur.tagName);
             var offset = currentLevel - prev;
 
+            // wrapper was set to <li>
+            // so the reduce level should be one more
+            offset = (Math.abs(offset) + 1) * (offset % 2);
+
             var pos = setInsertPosition(wrapper, offset) || ret;
             var li = document.createElement('li');
             var a = document.createElement('a');
@@ -89,6 +93,8 @@
             _setAttrs(cur, a, index);
 
             pos.appendChild(li).appendChild(a);
+
+            // set wrapper to <li> so that it's possible to insert nodes in ol > li
             wrapper = li;
 
             return currentLevel;

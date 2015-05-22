@@ -32,7 +32,7 @@
      * @return {jQuery} list
      */
     var createList = function ($wrapper, count) {
-        while (count--) {
+        while (--count) {
             $wrapper = $('<ol/>').appendTo($wrapper);
         }
 
@@ -104,6 +104,10 @@
                 var currentDepth = getLevel(elem.tagName);
                 var offset = currentDepth - prevDepth;
 
+                // wrapper was set to <li>
+                // so the reduce level should be one more
+                offset = (Math.abs(offset) + 1) * (offset % 2);
+
                 var $li = $('<li/>');
                 var $a = $('<a/>');
                 var $point = setInsertPosition($wrapper, offset);
@@ -116,7 +120,9 @@
 
                 $li.append($a).appendTo($point);
 
+                // set wrapper to <li> so that it's possible to insert nodes in ol > li
                 $wrapper = $li;
+
                 prevDepth = currentDepth;
             });
 

@@ -12,7 +12,7 @@ bower install jquery-toc
 2. **jQuery** version works on anywhere with **jQuery**
 
 ## Showcase
-[https://idiotwu.me/understanding-es6-promise/](https://idiotwu.me/understanding-es6-promise/) 
+[https://idiotwu.me/understanding-es6-promise/](https://idiotwu.me/understanding-es6-promise/)
 
 ## Usage
 
@@ -93,19 +93,21 @@ $('#toc').initTOC({
         <li>
             <a href="#toc-0">this is a h2</a>
             <ol>
-                <li><a href="#toc-1">this is a h3</a></li>
+                <li>
+                    <a href="#toc-1">this is a h3</a>
+                </li>
             </ol>
-            <li>
-                <a href="#toc-2">yet another h2</a>
-                <ol>
-                    <li>
-                        <a href="#toc-3">and another h3</a>
-                        <ol>
-                            <li><a href="#wow">existed id will be preserved due to options</a></li>
-                        </ol>
-                    </li>
-                </ol>
-            </li>
+        </li>
+        <li>
+            <a href="#toc-2">yet another h2</a>
+            <ol>
+                <li>
+                    <a href="#toc-3">and another h3</a>
+                    <ol>
+                        <li><a href="#wow">existed id will be preserved due to options</a></li>
+                    </ol>
+                </li>
+            </ol>
         </li>
     </ol>
 </aside>

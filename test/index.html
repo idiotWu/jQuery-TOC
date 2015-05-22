@@ -115,14 +115,13 @@
         <p data-anchor-id="tx67">MIT.</p>
     </main>
 
-    <script src="../src/toc.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../src/jquery.toc.js"></script>
     <script>
-        var aside = document.getElementById('toc');
-        var toc = initTOC({
+        $('#toc').initTOC({
             selector: 'h2, h3, h4',
             scope: 'main'
         });
-        aside.appendChild(toc);
     </script>
 </body>
 </html>
