@@ -20,10 +20,10 @@ bower install jquery-toc
 
 ```javascript
 // returns an ordered-list of headers in page content
-var list = initTOC(options);
+var toc = initTOC(options);
 
 // then you can append it to anywhere you like
-container.appendChild(list);
+elem.appendChild(toc);
 ```
 
 ### jQuery
@@ -83,6 +83,22 @@ $('#toc').initTOC({
     overwrite: false,
     prefix: 'toc'
 });
+```
+
+### non-jQuery version:
+
+```javascript
+
+var container = document.querySelector('#toc');
+
+var toc = initTOC({
+    selector: 'h2, h3, h4',
+    scope: '#post',
+    overwrite: false,
+    prefix: 'toc'
+});
+
+container.appendChild(toc);
 ```
 
 #### yield:
