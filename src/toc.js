@@ -54,7 +54,7 @@
         return function (src, target, index) {
             var content = src.textContent;
             var pre = prefix + '-' + index;
-            target.textContent = src.textContent;
+            target.textContent = content;
 
             var id = overwrite ? pre : (src.id || pre);
 

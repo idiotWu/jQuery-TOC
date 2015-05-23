@@ -9,8 +9,12 @@
     </style>
 </head>
 <body>
-    <aside id="toc">
-        <h4>Table of Contents</h4>
+    <aside class="toc jquery">
+        <h4>Table of Contents - with jQuery</h4>
+    </aside>
+
+    <aside  class="toc non-jquery">
+        <h4>Table of Contents - non-jQuery</h4>
     </aside>
 
     <main>
@@ -115,16 +119,25 @@
         <p data-anchor-id="tx67">MIT.</p>
     </main>
 
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../src/jquery.toc.js"></script>
     <script src="../src/toc.js"></script>
     <script>
-        var aside = document.querySelector('#toc');
-
-        var toc = initTOC({
+        var options = {
             selector: 'h2, h3, h4',
             scope: 'main'
-        });
+        };
 
-        aside.appendChild(toc);
+        // for jQuery version
+        $('.toc.jquery').initTOC(options);
+
+        // for non-jQuery version
+
+        var container = document.querySelector('.toc.non-jquery');
+
+        var toc = initTOC(options);
+
+        container.appendChild(toc);
     </script>
 </body>
 </html>
