@@ -25,7 +25,7 @@
     };
 
     /**
-     * create ul/ol
+     * create ordered list
      * @param {jQuert} $wrapper
      * @param {Number} count
      *
@@ -34,6 +34,10 @@
     var createList = function ($wrapper, count) {
         while (count--) {
             $wrapper = $('<ol/>').appendTo($wrapper);
+
+            if (count) {
+                $wrapper = $('<li/>').appendTo($wrapper);
+            }
         }
 
         return $wrapper;
@@ -106,8 +110,8 @@
                 }
 
                 if (offset < 0) {
-                    // should be one more level to jump back
-                    // eg: (h2 > h3) + h2, offset = h2 - h3 = -1
+                    // should be once more level to jump back
+                    // eg: h2 + h3 + h2, offset = h2 - h3 = -1
                     //
                     // ol <------+ target
                     //   li      |
@@ -115,7 +119,7 @@
                     //       li
                     //
                     // jumpback = target - current = 2
-                    $wrapper = jumpBack($wrapper, 1 - offset);
+                    $wrapper = jumpBack($wrapper, -offset * 2);
                 }
 
                 if (!$wrapper.length) {

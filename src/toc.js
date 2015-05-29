@@ -34,9 +34,15 @@
 
     var createList = function (wrapper, count) {
         while (count--) {
-            var ol = document.createElement('ol');
-            wrapper.appendChild(ol);
-            wrapper = ol;
+            wrapper = wrapper.appendChild(
+                document.createElement('ol')
+            );
+
+            if (count) {
+                wrapper = wrapper.appendChild(
+                    document.createElement('li')
+                );
+            }
         }
 
         return wrapper;
