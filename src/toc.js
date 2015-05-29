@@ -90,7 +90,7 @@
             }
 
             if (offset < 0) {
-                wrapper = jumpBack(wrapper, 1 - offset);
+                wrapper = jumpBack(wrapper, -offset * 2);
             }
 
             wrapper = wrapper || ret;
