@@ -133,10 +133,9 @@
         var currentHash = location.hash;
 
         if (currentHash) {
-            // fix hash
             setTimeout(function () {
-                location.hash = '';
-                location.hash = currentHash;
+                var anchor = document.getElementById(currentHash.slice(1));
+                if (anchor) anchor.scrollIntoView();
             }, 0);
         }
 
