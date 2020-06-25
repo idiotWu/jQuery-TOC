@@ -59,6 +59,16 @@
     };
 
     /**
+     * convert a string of text to a url slug
+     * @param {String} text: title or any string
+     *
+     * @return {String} text: url slug
+     */
+    var convertToUrl = function (text) {
+        return text.toLowerCase().replace(/ /g, '-').replace(/[-]+/g, '-').replace(/[^\w-]+/g, '');
+    }
+
+    /**
      * set element href/id and content
      * @param {Boolean} overwrite: whether overwrite source element existed id
      * @param {String} prefix: prefix to prepend to href/id
@@ -68,7 +78,7 @@
     var setAttrs = function (overwrite, prefix) {
         return function ($src, $target, index) {
             var content = $src.text();
-            var pre = prefix + '-' + index;
+            var pre = prefix === true ? convertToUrl(content) : prefix + '-' + index;
             $target.text(content);
 
             var src = $src[0];

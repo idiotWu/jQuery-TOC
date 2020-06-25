@@ -47,7 +47,7 @@ initTOC({
 - `String:selector`: headers selector, default is `'h1, h2, h3, h4, h5, h6'`.
 - `String:scope`: selector to specify elements search scope, default is `'body'`.
 - `Boolean:overwrite`: whether to overwrite existed headers' id, default is `false`, which means plugin will preserve the existed id property and create a string like `toc-1` for those don't have id assigned.
-- `String:prefix`: string to prepend to id/href property, default is `'toc'`, which generates a string like `toc-0`.
+- `String:prefix`: string to prepend to id/href property, default is `'toc'`, which generates a string like `toc-0`. Set to `true` to generate an automatic prefix based on the title.
 
 ## Example
 
