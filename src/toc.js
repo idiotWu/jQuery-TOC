@@ -55,11 +55,15 @@
 
         return currentWrapper;
     };
+    
+    var convertToUrl = function (text) {
+        return text.toLowerCase().replace(/ /g, '-').replace(/[-]+/g, '-').replace(/[^\w-]+/g, '');
+    }
 
     var setAttrs = function (overwrite, prefix) {
         return function (src, target, index) {
             var content = src.textContent;
-            var pre = prefix + '-' + index;
+            var pre = prefix === true ? convertToUrl(content) : prefix + '-' + index;
             target.textContent = content;
 
             var id = overwrite ? pre : (src.id || pre);
