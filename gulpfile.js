@@ -1,6 +1,6 @@
 /**
  * @date     2015/5/11
- * @author   Dolphin<dolphin.w.e@gmail.com>
+ * @author   Dolphin
  */
 
 var gulp = require('gulp');
